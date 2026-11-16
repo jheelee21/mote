@@ -1,0 +1,35 @@
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Node
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Rust / Tauri
+target/
+apps/desktop/src-tauri/binaries/
+apps/desktop/src-tauri/gen/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+build/
+*.egg-info/
+
+# Mote local data (never commit photos, thumbnails, embeddings or DBs)
+*.sqlite
+*.sqlite3
+*.db
+.mote-data/
+research/eval/photos/
+research/notebooks/.ipynb_checkpoints/
+models-cache/
