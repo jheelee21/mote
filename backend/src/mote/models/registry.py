@@ -23,6 +23,11 @@ def available() -> list[str]:
 
 
 def get_embedder(model_id: str) -> Embedder:
+    """Return an embedder by registered id, or any Hub model as ``hf:<repo_id>``."""
+    if model_id.startswith("hf:"):
+        from mote.models.hf import HFEmbedder
+
+        return HFEmbedder(model_id.removeprefix("hf:"))
     try:
         factory = _FACTORIES[model_id]
     except KeyError:
@@ -38,10 +43,7 @@ def _dummy() -> Embedder:
 
 register("dummy", _dummy)
 
-# Example for a real model, once chosen (lives in mote/models/<name>.py):
-#
-# def _openclip_b32() -> Embedder:
-#     from mote.models.openclip import OpenClipEmbedder
-#     return OpenClipEmbedder("ViT-B-32", "laion2b_s34b_b79k")
-#
-# register("openclip-vit-b-32", _openclip_b32)
+# Any Hugging Face image-text model works without registering it:
+#     get_embedder("hf:google/siglip2-base-patch16-224")
+# Register a short alias here once a default model is chosen, e.g.
+#     register("default", lambda: get_embedder("hf:<chosen repo>"))

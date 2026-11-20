@@ -16,9 +16,13 @@ dependencies = [
 # Heavy ML stack; the embedding model itself is chosen later.
 ml = [
     "torch>=2.4",
-    "scikit-learn>=1.5",
+    "scikit-learn>=1.5",          # includes HDBSCAN
     "umap-learn>=0.5",
-    "hdbscan>=0.8",
+    "transformers>=4.49",         # CLIP, SigLIP, SigLIP 2, MetaCLIP via AutoModel
+    "open-clip-torch>=2.29",      # hf-hub open_clip models (LAION, DFN, ...)
+    "huggingface-hub>=0.26",
+    "sentencepiece>=0.2",         # SigLIP tokenizer
+    "protobuf>=5",
 ]
 raw = ["rawpy>=0.22"]
 
@@ -34,7 +38,11 @@ dev = [
 ]
 research = [
     "jupyterlab>=4.2",
+    "ipywidgets>=8.1",
     "matplotlib>=3.9",
+    "pandas>=2.2",
+    "tqdm>=4.66",
+    "psutil>=6.0",
 ]
 
 [build-system]

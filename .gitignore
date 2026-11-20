@@ -33,3 +33,7 @@ build/
 research/eval/photos/
 research/notebooks/.ipynb_checkpoints/
 models-cache/
+
+# Research caches (previews and embeddings of your photos)
+research/.cache/
+research/eval/labels.csv
